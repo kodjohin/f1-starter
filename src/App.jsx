@@ -11,14 +11,16 @@ const StyledApp = styled.div`
 	width: 100vw;
 	height: 100vh;
 	gap: 100px;
-	
 
 	#container {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
-
+	.info {
+		color: #fff;
+		opacity: 0.5;
+	}
 	button {
 		padding: 1em 3em;
 		border-radius: 0.3em;
@@ -26,7 +28,8 @@ const StyledApp = styled.div`
 		font-size: 2rem;
 		font-weight: 500;
 		color: #f44336;
-
+		background-color: #fff;
+		transition: background-color 0.3s ease;
 		:hover {
 			background-color: #ffffffa6;
 			transition: background-color 0.3s ease;
@@ -76,7 +79,7 @@ const App = () => {
 						setStarted(false);
 					}, 2000);
 			}, 1000);
-			// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currIndex, started]);
 
 	useEffect(() => {
@@ -109,6 +112,7 @@ const App = () => {
 
 	return (
 		<StyledApp onClick={() => setState((s) => ({ ...s, running: false }))}>
+			<div className="info">Tap the screen to stop time running</div>
 			<div id="container">
 				{lights.map((light) => (
 					<Light key={light.id} on={light.on} />
